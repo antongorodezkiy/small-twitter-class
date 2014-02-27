@@ -72,6 +72,10 @@ class Twitter {
         }
     }
 	
+	private function log($type, $message) {
+		echo $type.': '.print_r($message,true);
+	}
+	
 	public function makeSignature($url, $method = 'GET'){
 
 		ksort($this->params);
@@ -143,9 +147,9 @@ class Twitter {
 		
 		if (!$isOk) {
 			$this->errors = $this->responseData['errors'];
-			Logger::i()->log_twitter('error',$this->errors);
-			Logger::i()->log_twitter('error',$this->responseInfo);
-			Logger::i()->log_twitter('error',$this->responseDataRaw);
+			$this->log('error',$this->errors);
+			$this->log('error',$this->responseInfo);
+			$this->log('error',$this->responseDataRaw);
 		}
 		else{
 			$this->errors = null;
@@ -183,9 +187,9 @@ class Twitter {
 		
 		if (!$isOk) {
 			$this->errors = $this->responseData['errors'];
-			Logger::i()->log_twitter('error',$this->errors);
-			Logger::i()->log_twitter('error',$this->responseInfo);
-			Logger::i()->log_twitter('error',$this->responseDataRaw);
+			$this->log('error',$this->errors);
+			$this->log('error',$this->responseInfo);
+			$this->log('error',$this->responseDataRaw);
 		}
 		else{
 			$this->errors = null;
